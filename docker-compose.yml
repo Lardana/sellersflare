@@ -1,0 +1,9 @@
+services:
+  sellersflare:
+    container_name: sellersflare
+    build: .
+    env_file:
+      - .env
+    ports:
+      - "${SELLERSFLARE_BIND_HOST:-127.0.0.1}:${SELLERSFLARE_BIND_PORT:-18120}:8080"
+    restart: unless-stopped
