@@ -3,7 +3,7 @@
 ## Repository
 
 ```text
-sellersflare
+https://github.com/Lardana/sellersflare
 ```
 
 ## Short description
