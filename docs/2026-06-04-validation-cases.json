@@ -1,0 +1,322 @@
+[
+  {
+    "id": "safe-01",
+    "segment": "safe",
+    "rationale": "Собственный бренд, нейтральная категория, без признаков копии или заимствования.",
+    "expected_signal": "no_obvious_ip_or_content_signal",
+    "review_note": "Проверить сохранность доказательной базы по фото, описанию и происхождению товара.",
+    "input": {
+      "marketplace": "manual",
+      "title": "Набор кухонных полотенец Luma Home",
+      "description": "Хлопковые полотенца собственного бренда, описание подготовлено продавцом.",
+      "brand": "Luma Home",
+      "category": "home",
+      "image_urls": ["https://example.com/safe-01.jpg"],
+      "seller_context": "own_brand"
+    }
+  },
+  {
+    "id": "safe-02",
+    "segment": "safe",
+    "rationale": "Оригинальный товар с указанным брендом и без риск-лексики.",
+    "expected_signal": "no_obvious_ip_or_content_signal",
+    "review_note": "Проверить, что статус оригинального товара подтверждается документами поставки.",
+    "input": {
+      "marketplace": "ozon",
+      "title": "Органайзер для документов Nord Desk",
+      "description": "Пластиковый органайзер для хранения бумаг, фотографии сделаны продавцом.",
+      "brand": "Nord Desk",
+      "category": "office",
+      "image_urls": ["https://example.com/safe-02.jpg"],
+      "seller_context": "original"
+    }
+  },
+  {
+    "id": "safe-03",
+    "segment": "safe",
+    "rationale": "Нейтральное описание и собственное происхождение товара.",
+    "expected_signal": "no_obvious_ip_or_content_signal",
+    "review_note": "Проверить, что упаковка, текст и изображения действительно подготовлены для собственного бренда.",
+    "input": {
+      "marketplace": "wb",
+      "title": "Свеча ароматическая Cedar Room",
+      "description": "Свеча из соевого воска с древесным ароматом, упаковка и текст разработаны брендом.",
+      "brand": "Cedar Room",
+      "category": "decor",
+      "image_urls": ["https://example.com/safe-03.jpg"],
+      "seller_context": "own_brand"
+    }
+  },
+  {
+    "id": "safe-04",
+    "segment": "safe",
+    "rationale": "Нет чужих обозначений, категория не входит в базовый список повышенного риска.",
+    "expected_signal": "no_obvious_ip_or_content_signal",
+    "review_note": "Проверить источник изображений и описание материалов без обращения к чужим карточкам.",
+    "input": {
+      "marketplace": "manual",
+      "title": "Садовые перчатки Green Yard",
+      "description": "Перчатки для посадки растений, материал и размерная сетка описаны продавцом.",
+      "brand": "Green Yard",
+      "category": "garden",
+      "image_urls": ["https://example.com/safe-04.jpg"],
+      "seller_context": "own_brand"
+    }
+  },
+  {
+    "id": "safe-05",
+    "segment": "safe",
+    "rationale": "Карточка без сигналов имитации, чужих фото или нехватки документов.",
+    "expected_signal": "no_obvious_ip_or_content_signal",
+    "review_note": "Проверить, что дизайн и описание блокнота принадлежат продавцу или его поставщику.",
+    "input": {
+      "marketplace": "ozon",
+      "title": "Блокнот A5 Paper Trail",
+      "description": "Блокнот в твердой обложке, 96 листов, дизайн разработан для бренда Paper Trail.",
+      "brand": "Paper Trail",
+      "category": "stationery",
+      "image_urls": ["https://example.com/safe-05.jpg"],
+      "seller_context": "own_brand"
+    }
+  },
+  {
+    "id": "ambiguous-01",
+    "segment": "ambiguous",
+    "rationale": "Совместимость с чужим обозначением может быть допустимой, но требует аккуратной формулировки.",
+    "expected_signal": "compatibility_wording_review",
+    "review_note": "Проверить, что чужое обозначение используется только для описания совместимости и не выглядит как бренд товара.",
+    "input": {
+      "marketplace": "ozon",
+      "title": "Кабель зарядный совместимый с PhoneMax 12",
+      "description": "Кабель подходит для устройств PhoneMax, документы поставщика доступны по запросу.",
+      "brand": "VoltWay",
+      "category": "electronics",
+      "image_urls": ["https://example.com/ambiguous-01.jpg"],
+      "seller_context": "resale"
+    }
+  },
+  {
+    "id": "ambiguous-02",
+    "segment": "ambiguous",
+    "rationale": "Категория повышенного риска и ресейл без явного признака копии.",
+    "expected_signal": "document_origin_review",
+    "review_note": "Проверить документы происхождения товара и право продажи партии перед публикацией.",
+    "input": {
+      "marketplace": "wb",
+      "title": "Кроссовки городские Nova Step",
+      "description": "Партия от поставщика, документы нужно проверить перед публикацией.",
+      "brand": "Nova Step",
+      "category": "обувь",
+      "image_urls": ["https://example.com/ambiguous-02.jpg"],
+      "seller_context": "resale"
+    }
+  },
+  {
+    "id": "ambiguous-03",
+    "segment": "ambiguous",
+    "rationale": "Beauty-категория и параллельный импорт повышают документную неопределенность.",
+    "expected_signal": "document_origin_review",
+    "review_note": "Проверить маркировку, импортные документы и допустимость заявлений в описании.",
+    "input": {
+      "marketplace": "ozon",
+      "title": "Сыворотка для лица Lumera",
+      "description": "Поставка через импортера, нужно подтвердить маркировку и происхождение товара.",
+      "brand": "Lumera",
+      "category": "beauty",
+      "image_urls": ["https://example.com/ambiguous-03.jpg"],
+      "seller_context": "parallel_import"
+    }
+  },
+  {
+    "id": "ambiguous-04",
+    "segment": "ambiguous",
+    "rationale": "Описание ссылается на производителя, но без прямого указания копирования.",
+    "expected_signal": "content_rewrite_review",
+    "review_note": "Переписать описание собственными словами и не публиковать текст производителя без разрешения.",
+    "input": {
+      "marketplace": "manual",
+      "title": "Набор бит для шуруповерта MasterKit",
+      "description": "Описание производителя использовано как основа, перед публикацией текст нужно переписать.",
+      "brand": "MasterKit",
+      "category": "tools",
+      "image_urls": ["https://example.com/ambiguous-04.jpg"],
+      "seller_context": "resale"
+    }
+  },
+  {
+    "id": "ambiguous-05",
+    "segment": "ambiguous",
+    "rationale": "Изображения есть, но происхождение и контекст продажи неясны.",
+    "expected_signal": "document_origin_review",
+    "review_note": "Уточнить происхождение товара и права на изображения до публикации карточки.",
+    "input": {
+      "marketplace": "wb",
+      "title": "Рюкзак городской Line Pack",
+      "description": "Материал полиэстер, отделение для ноутбука, гарантия продавца.",
+      "brand": "Line Pack",
+      "category": "accessories",
+      "image_urls": ["https://example.com/ambiguous-05.jpg"],
+      "seller_context": "unknown"
+    }
+  },
+  {
+    "id": "risky-01",
+    "segment": "risky",
+    "rationale": "Прямые слова про реплику и стиль чужого бренда.",
+    "expected_signal": "high_trademark_document_image_risk",
+    "review_note": "Убрать лексику реплики/стиля, проверить бренд, фото и документы происхождения товара.",
+    "input": {
+      "marketplace": "ozon",
+      "title": "Реплика сумки в стиле известного бренда",
+      "description": "Фото производителя, документов нет.",
+      "brand": "",
+      "category": "fashion",
+      "image_urls": ["https://example.com/risky-01.jpg"],
+      "seller_context": "resale"
+    }
+  },
+  {
+    "id": "risky-02",
+    "segment": "risky",
+    "rationale": "Текст прямо указывает на копию и отсутствие документов.",
+    "expected_signal": "high_trademark_document_image_risk",
+    "review_note": "Не публиковать карточку до ручной проверки документов, фото и правомерности обозначений.",
+    "input": {
+      "marketplace": "wb",
+      "title": "Копия популярных наушников как у известного бренда",
+      "description": "Фото с сайта, сертификат отсутствует, поставщик неизвестен.",
+      "brand": "",
+      "category": "electronics",
+      "image_urls": ["https://example.com/risky-02.jpg"],
+      "seller_context": "unknown"
+    }
+  },
+  {
+    "id": "risky-03",
+    "segment": "risky",
+    "rationale": "Комбинация fake/copy, чужих фото и параллельного импорта.",
+    "expected_signal": "high_trademark_document_image_risk",
+    "review_note": "Проверить возможность продажи товара и заменить формулировки, указывающие на копию или имитацию.",
+    "input": {
+      "marketplace": "manual",
+      "title": "Fake style watch copy",
+      "description": "Фото бренда из интернета, без документов поставщика.",
+      "brand": "",
+      "category": "accessories",
+      "image_urls": ["https://example.com/risky-03.jpg"],
+      "seller_context": "parallel_import"
+    }
+  },
+  {
+    "id": "risky-04",
+    "segment": "risky",
+    "rationale": "Игрушки, аналог чужого товара и признаки заимствованного контента.",
+    "expected_signal": "high_trademark_content_document_risk",
+    "review_note": "Проверить описание, изображения, документы и убрать сравнения с чужой серией без безопасного основания.",
+    "input": {
+      "marketplace": "ozon",
+      "title": "Аналог конструктора известной серии",
+      "description": "Текст производителя скопирован, фото с сайта, документов нет.",
+      "brand": "",
+      "category": "toys",
+      "image_urls": ["https://example.com/risky-04.jpg"],
+      "seller_context": "resale"
+    }
+  },
+  {
+    "id": "risky-05",
+    "segment": "risky",
+    "rationale": "Риск-лексика про подделку и отсутствие подтверждающих документов.",
+    "expected_signal": "high_trademark_content_document_risk",
+    "review_note": "Не публиковать карточку в текущем виде; нужна ручная проверка бренда, фото, описания и сертификатов.",
+    "input": {
+      "marketplace": "wb",
+      "title": "Подделка аксессуара в стиле премиального бренда",
+      "description": "Чужое фото, описание как на сайте, сертификат отсутствует.",
+      "brand": "",
+      "category": "аксессуары",
+      "image_urls": ["https://example.com/risky-05.jpg"],
+      "seller_context": "unknown"
+    }
+  },
+  {
+    "id": "insufficient-01",
+    "segment": "insufficient_data",
+    "rationale": "Пустое описание и отсутствие изображений должны попадать в uncertainty.",
+    "expected_signal": "insufficient_data_review",
+    "review_note": "Запросить описание, бренд, изображения и происхождение товара перед выводами о риске.",
+    "input": {
+      "marketplace": "manual",
+      "title": "Чехол для телефона",
+      "description": "",
+      "brand": "",
+      "category": "",
+      "image_urls": [],
+      "seller_context": "unknown"
+    }
+  },
+  {
+    "id": "insufficient-02",
+    "segment": "insufficient_data",
+    "rationale": "Есть категория, но нет бренда, описания и изображений.",
+    "expected_signal": "insufficient_data_review",
+    "review_note": "Запросить бренд, описание, изображения и документы для beauty-категории.",
+    "input": {
+      "marketplace": "ozon",
+      "title": "Крем для лица",
+      "description": "",
+      "brand": "",
+      "category": "beauty",
+      "image_urls": [],
+      "seller_context": "unknown"
+    }
+  },
+  {
+    "id": "insufficient-03",
+    "segment": "insufficient_data",
+    "rationale": "Нет seller_context и изображений, описание слишком общее.",
+    "expected_signal": "insufficient_data_review",
+    "review_note": "Уточнить контекст продажи, бренд, изображения и документы происхождения.",
+    "input": {
+      "marketplace": "wb",
+      "title": "Автомобильный держатель",
+      "description": "Держатель для телефона в автомобиль.",
+      "brand": "",
+      "category": "auto",
+      "image_urls": [],
+      "seller_context": ""
+    }
+  },
+  {
+    "id": "insufficient-04",
+    "segment": "insufficient_data",
+    "rationale": "Указан бренд, но нет описания и изображений для полноценной проверки.",
+    "expected_signal": "insufficient_data_review",
+    "review_note": "Запросить описание, фото и документы поставщика; категорию одежды оценивать осторожно.",
+    "input": {
+      "marketplace": "manual",
+      "title": "Футболка Basic Line",
+      "description": "",
+      "brand": "Basic Line",
+      "category": "одежда",
+      "image_urls": [],
+      "seller_context": "resale"
+    }
+  },
+  {
+    "id": "insufficient-05",
+    "segment": "insufficient_data",
+    "rationale": "Минимальная карточка с неизвестным происхождением товара.",
+    "expected_signal": "insufficient_data_review",
+    "review_note": "Запросить бренд, описание, изображения и происхождение товара до публикации.",
+    "input": {
+      "marketplace": "ozon",
+      "title": "Набор инструментов",
+      "description": "",
+      "brand": "",
+      "category": "tools",
+      "image_urls": [],
+      "seller_context": "unknown"
+    }
+  }
+]

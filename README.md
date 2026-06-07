@@ -74,6 +74,8 @@ curl -sS http://127.0.0.1:8088/api/risk/check \
 ## Документы
 
 - `docs/2026-05-23-research.md`
+- `docs/2026-06-04-validation-update.md`
+- `docs/2026-06-04-validation-cases.json`
 
 ## Разработка
 
