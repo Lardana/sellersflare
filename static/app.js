@@ -5,6 +5,8 @@ const summary = document.querySelector("#summary");
 const breakdown = document.querySelector("#breakdown");
 const recommendations = document.querySelector("#recommendations");
 const uncertainty = document.querySelector("#uncertainty");
+const saasStatus = document.querySelector("#saas-status");
+const saasTables = document.querySelector("#saas-tables");
 
 function list(target, items) {
   target.innerHTML = "";
@@ -60,4 +62,32 @@ form.addEventListener("submit", async (event) => {
   });
 
   render(await response.json());
+});
+
+async function renderSaaSReadiness() {
+  const [readinessResponse, blueprintResponse] = await Promise.all([
+    fetch("/api/saas/readiness"),
+    fetch("/api/saas/blueprint"),
+  ]);
+  const readiness = await readinessResponse.json();
+  const blueprint = await blueprintResponse.json();
+
+  saasStatus.textContent = readiness.enabled
+    ? "SaaS Lite включен через env. Перед реальными пользователями нужен RLS smoke."
+    : "SaaS Lite пока выключен. Blueprint и SQL-скелет готовы для пилота.";
+
+  saasTables.innerHTML = "";
+  for (const table of blueprint.tables) {
+    const item = document.createElement("article");
+    item.className = "saas-table";
+    item.innerHTML = `
+      <strong>${table.name}</strong>
+      <span>${table.purpose}</span>
+    `;
+    saasTables.appendChild(item);
+  }
+}
+
+renderSaaSReadiness().catch(() => {
+  saasStatus.textContent = "SaaS readiness сейчас недоступен.";
 });

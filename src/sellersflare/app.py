@@ -10,6 +10,7 @@ from fastapi.responses import FileResponse, HTMLResponse, PlainTextResponse
 from fastapi.staticfiles import StaticFiles
 
 from .risk_engine import ListingInput, RiskResponse, analyze_listing
+from .saas import SaaSBlueprint, SaaSReadiness, get_saas_blueprint, get_saas_readiness
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -58,6 +59,14 @@ def create_app() -> FastAPI:
     @app.post("/api/risk/check", response_model=RiskResponse)
     def check_risk(listing: ListingInput) -> RiskResponse:
         return analyze_listing(listing)
+
+    @app.get("/api/saas/blueprint", response_model=SaaSBlueprint)
+    def saas_blueprint() -> SaaSBlueprint:
+        return get_saas_blueprint()
+
+    @app.get("/api/saas/readiness", response_model=SaaSReadiness)
+    def saas_readiness() -> SaaSReadiness:
+        return get_saas_readiness()
 
     @app.get("/research.pdf")
     def research_pdf() -> FileResponse:
@@ -153,6 +162,15 @@ def _index_html() -> str:
           <h2>Неопределенность</h2>
           <ul id="uncertainty"></ul>
         </section>
+      </section>
+
+      <section class="panel saas">
+        <div>
+          <p class="eyebrow">SaaS Lite</p>
+          <h2>Supabase-ready shell</h2>
+          <p id="saas-status">Проверяю readiness...</p>
+        </div>
+        <div id="saas-tables" class="saas-tables"></div>
       </section>
     </section>
   </main>
