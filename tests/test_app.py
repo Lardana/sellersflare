@@ -52,3 +52,38 @@ def test_research_markdown_is_available() -> None:
 
     assert response.status_code == 200
     assert "Sellersflare" in response.text
+
+
+def test_saas_blueprint_exposes_safe_supabase_plan() -> None:
+    client = TestClient(create_app())
+
+    response = client.get("/api/saas/blueprint")
+
+    assert response.status_code == 200
+    payload = response.json()
+    assert payload["product"] == "Sellersflare SaaS Lite"
+    assert {table["name"] for table in payload["tables"]} == {
+        "profiles",
+        "check_requests",
+        "risk_results",
+        "report_exports",
+    }
+    assert any("SERVICE_ROLE_KEY" in note for note in payload["security_notes"])
+
+
+def test_saas_readiness_does_not_leak_secret_values(monkeypatch) -> None:
+    monkeypatch.setenv("SELLERSFLARE_SAAS_LITE_ENABLED", "true")
+    monkeypatch.setenv("SUPABASE_URL", "https://example.supabase.co")
+    monkeypatch.setenv("SUPABASE_ANON_KEY", "anon-secret-value")
+    monkeypatch.setenv("SUPABASE_SERVICE_ROLE_KEY", "service-role-secret-value")
+    client = TestClient(create_app())
+
+    response = client.get("/api/saas/readiness")
+
+    assert response.status_code == 200
+    payload = response.json()
+    assert payload["enabled"] is True
+    assert payload["supabase_url_configured"] is True
+    assert payload["anon_key_configured"] is True
+    assert payload["service_role_configured"] is True
+    assert "secret-value" not in response.text

@@ -8,6 +8,10 @@ Sellersflare не является юридической консультаци
 
 - Web-форма проверки карточки.
 - `POST /api/risk/check` с rules-first scoring.
+- Supabase-ready SaaS Lite blueprint:
+  - `GET /api/saas/blueprint`;
+  - `GET /api/saas/readiness`;
+  - SQL skeleton in `supabase/migrations/001_saas_lite.sql`.
 - Breakdown по направлениям:
   - trademark;
   - image;
@@ -76,6 +80,27 @@ curl -sS http://127.0.0.1:8088/api/risk/check \
 - `docs/2026-05-23-research.md`
 - `docs/2026-06-04-validation-update.md`
 - `docs/2026-06-04-validation-cases.json`
+- `docs/2026-06-11-supabase-saas-lite-plan.md`
+
+## SaaS Lite / Supabase
+
+Supabase is prepared as a SaaS shell, not as a replacement for the risk engine.
+
+Intended split:
+
+- Supabase Auth owns user identity.
+- Supabase Postgres stores check history, results, and report metadata with RLS.
+- Supabase Storage stores generated report artifacts.
+- Sellersflare Python/FastAPI keeps deterministic scoring and future report generation.
+
+Safe rollout order:
+
+```bash
+curl http://127.0.0.1:8088/api/saas/blueprint
+curl http://127.0.0.1:8088/api/saas/readiness
+```
+
+Then apply `supabase/migrations/001_saas_lite.sql` to a real Supabase project only after secrets are configured outside the repository.
 
 ## Разработка
 

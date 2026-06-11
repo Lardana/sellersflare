@@ -179,6 +179,40 @@ li {
   margin: 6px 0;
 }
 
+.saas {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.7fr) minmax(320px, 1.3fr);
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.saas h2 {
+  margin-top: 0;
+  font-size: 22px;
+}
+
+.saas-tables {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.saas-table {
+  display: grid;
+  gap: 6px;
+  min-height: 98px;
+  border: 1px solid #e2e8ef;
+  border-radius: 6px;
+  background: #fbfcfd;
+  padding: 12px;
+}
+
+.saas-table span {
+  color: #506173;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
 @media (max-width: 780px) {
   .shell {
     padding: 18px;
@@ -186,9 +220,14 @@ li {
 
   .topbar,
   .grid,
+  .saas,
   .two {
     grid-template-columns: 1fr;
     display: grid;
+  }
+
+  .saas-tables {
+    grid-template-columns: 1fr;
   }
 
   h1 {
